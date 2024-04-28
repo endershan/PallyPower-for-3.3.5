@@ -1923,7 +1923,7 @@ function PallyPower:UpdateButton(button, baseName, classID)
 
 	if (nneed+nspecial > 0) then
 		text:SetText(nneed+nspecial)
-		text:SetTextColor(RAID_CLASS_COLORS[PallyPower.ClassID[classID]]["r"],RAID_CLASS_COLORS[PallyPower.ClassID[classID]]["g"],RAID_CLASS_COLORS[PallyPower.ClassID[classID]]["b"]) -- emi: add class color
+		if classID~= 11 then text:SetTextColor(RAID_CLASS_COLORS[PallyPower.ClassID[classID]]["r"],RAID_CLASS_COLORS[PallyPower.ClassID[classID]]["g"],RAID_CLASS_COLORS[PallyPower.ClassID[classID]]["b"]) end-- emi: add class color
 	else
 		text:SetText("")
 	end
@@ -2101,8 +2101,9 @@ function PallyPower:UpdatePButton(button, baseName, classID, playerID)
 				dead:SetAlpha(0)
 			end
 		end
+
 		name:SetText(unit.name)
-		name:SetTextColor(RAID_CLASS_COLORS[unit.class]["r"],RAID_CLASS_COLORS[unit.class]["g"],RAID_CLASS_COLORS[unit.class]["b"]) -- emi: add class color
+		if classID~= 11 then name:SetTextColor(RAID_CLASS_COLORS[unit.class]["r"],RAID_CLASS_COLORS[unit.class]["g"],RAID_CLASS_COLORS[unit.class]["b"]) end-- emi: add class color
 	else
 		self:ApplyBackdrop(button, self.opt.cBuffGood)
 		buffIcon:SetAlpha(0)
